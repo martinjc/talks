@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <title></title>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="../../reveal/css/reveal.css" />
+
+        <!-- My CSS Overrides -->
+        <link rel="stylesheet" href="../../css/slide_style.css" />
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../reveal/lib/css/zenburn.css" />
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = window.location.search.match(/print-pdf/gi)
+                ? "../../reveal/css/print/pdf.css"
+                : "../../reveal/css/print/paper.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+        </script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Quantifying my Tired and Haggard self</h1>
+                    <footer>
+                        <h3>PyDiff - 2019-01-15 - @martinjc</h3>
+                    </footer>
+                </section>
+                <section>
+                    <h1>Quantifying my Tired and Haggard self</h1>
+                    <footer>
+                        <h3>PyDiff - 2019-05-14 - @martinjc</h3>
+                    </footer>
+                </section>
+                <section data-background-image="img/selfie.jpg"></section>
+                <section
+                    data-background-image="img/martin_young.jpeg"
+                    data-background-size="contain"
+                ></section>
+                <section data-background-image="img/selfie2.jpg"></section>
+                <section
+                    data-background-image="img/data.png"
+                    data-background-size="contain"
+                ></section>
+                <section
+                    data-background-image="img/fitbit.png"
+                    data-background-size="contain"
+                ></section>
+                <section>
+                    <pre>
+                    <code data-trim data-noescape class="stretch python">
+                        def get_auth_url():
+                            # create an authorisation url to copy paste into a browser window
+                            # so we can get an access token to store in _credentials.py
+                            
+                            base_url = "https://www.fitbit.com/"
+                            endpoint = "oauth2/authorize"
+                            params = {
+                                'response_type': 'token',
+                                'client_id': '228Z47', # not privileged information, can be public
+                                'redirect_uri': 'http://www.martinjc.com',
+                                'expires_in': 31536000,
+                                'scope': 'activity heartrate location nutrition profile settings sleep social weight', # oh my god we don't need all this, but why not, eh?
+                            }
+                            
+                            auth_url = base_url + endpoint + "?" + urlencode(params, quote_via=quote)
+                            return auth_url
+                    </code>
+                </pre>
+                </section>
+                <section>
+                    <pre>
+                    <code data-trim data-noescape class="stretch python">
+                        def get_sleeps_list():
+                            
+                            sleeps = []
+                            
+                            today = datetime.today()
+                            
+                            today_string = today.date().isoformat()
+                            print(today_string)
+                            
+                            base_url = 'https://api.fitbit.com/1.2/user/-/sleep/list.json'
+                            
+                            headers = {
+                                'Authorization': 'Bearer ' + access_token
+                            }
+                            
+                            params = {
+                                'beforeDate': today_string,
+                                'sort': 'desc',
+                                'offset': 0,
+                                'limit': 100
+                            }
+                    </code>
+                </pre>
+                </section>
+                <!-- <section>
+                    <pre>
+                    <code data-trim data-noescape class="stretch python">
+                            # get the first set of sleep records
+                            r = requests.get(base_url, params=params, headers=headers)
+                            sleeps, next = collate_sleeps(sleeps, r)
+
+
+                            def collate_sleeps(sleeps, response):
+                                # extract sleep data from response and add to existing sleep records
+                                # check to see if there's a next page and get that too
+                                response_json = response.json()
+                                if response_json.get('sleep'):
+                                    sleeps += response_json['sleep']
+                                next = response_json.get('pagination').get('next')
+                                return sleeps, next
+                    </code>
+                </pre>
+                </section> -->
+                <section>
+                    <pre>
+                    <code data-trim data-noescape class="stretch python">
+                            # while there's more records to get, get them
+                            # note fitbit apparently can't tell when there are no more
+                            # this will crap out at some point and start returning
+                            # errors, so we'll only carry on while the status code is good
+                            while r.status_code == 200:
+                                try:
+                                    print(next)
+                                    r = requests.get(next, headers=headers)
+                                    sleeps, next = collate_sleeps(sleeps, r)
+                                    print(len(sleeps))
+                                except Exception:
+                                    with open('sleeps.json', 'w') as output_file:
+                                        json.dump(sleeps, output_file)
+                                        sys.exit(0)
+                    </code>
+                </pre>
+                </section>
+                <section>
+                    <pre>
+                    <code data-trim data-noescape class="stretch json">
+                        {
+                            "dateOfSleep": "2019-05-12",
+                            "duration": 30240000,
+                            "efficiency": 93,
+                            "endTime": "2019-05-12T07:30:00.000",
+                            "infoCode": 0,
+                            "levels": {
+                            "data": [
+                                {
+                                    "dateTime": "2019-05-11T23:06:00.000",
+                                    "level": "wake",
+                                    "seconds": 420
+                                },
+                                {
+                                    "dateTime": "2019-05-11T23:13:00.000",
+                                    "level": "light",
+                                    "seconds": 1230
+                                },
+                                {
+                                    "dateTime": "2019-05-11T23:33:30.000",
+                                    "level": "deep",
+                                    "seconds": 1590
+                                },
+                    </code>
+                </pre>
+                </section>
+                <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                        columns = ['dateOfSleep', 'duration', 'efficiency', 'endTime', 'minutesAsleep', 'minutesAwake', 'minutesToFallAsleep', 'startTime', 'timeInBed']
+
+                        with open('sleep_data.csv', 'w') as output_file:
+
+                            writer = csv.DictWriter(output_file, columns)
+                            writer.writeheader()
+
+                            for sleep in sleeps:
+                                data = {}
+                                for c in columns:
+                                    data[c] = sleep[c]
+                            writer.writerow(data)
+                        </code>
+                    </pre>
+                </section>
+                <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                            sleep_data = pd.read_csv('sleep_data.csv')
+                            for column in ['dateOfSleep', 'endTime', 'startTime']:
+                                sleep_data[column] = pd.to_datetime(sleep_data[column])
+                            sleep_data.sort_values(by='dateOfSleep', inplace=True)
+                            sleep_data['Month-Year'] = sleep_data['dateOfSleep'].dt.strftime('%Y-%m')
+                            sleep_data['Month'] = sleep_data['dateOfSleep'].dt.strftime('%m')
+                            sleep_data['Year'] = sleep_data['dateOfSleep'].dt.strftime('%Y')
+                        </code>
+                    </pre>
+                </section>
+                <!-- <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                            sns.violinplot(data=sleep_data, x='Month-Year', y='minutesAsleep', cut=0)
+                        </code>
+                    </pre>
+                </section>
+                <section
+                    data-background-image="img/monthly-sleep.png"
+                    data-background-size="contain"
+                ></section> -->
+                <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                            monthly_average_sleep = sleep_data.groupby('Month-Year')['minutesAsleep'].mean()
+                        </code>
+                    </pre>
+                </section>
+                <section
+                    data-background-image="img/mean_sleep.png"
+                    data-background-size="contain"
+                ></section>
+                <!-- <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                            sns.violinplot(data=sleep_data, x='Month-Year', y='minutesToFallAsleep', cut=0)
+                        </code>
+                    </pre>
+                </section>
+                <section
+                    data-background-image="img/timetosleep.png"
+                    data-background-size="contain"
+                ></section> -->
+                <section>
+                    <pre>
+                        <code data-trim data-noescape class="stretch python">
+                            sns.swarmplot(data=sleep_data, x='Month-Year', y='timeInBed')
+                        </code>
+                    </pre>
+                </section>
+                <section
+                    data-background-image="img/swarm.png"
+                    data-background-size="contain"
+                ></section>
+                <section
+                    data-background-image="img/vince-tweet.png"
+                    data-background-size="contain"
+                ></section>
+                <section
+                    data-background-image="img/vince-tweet2.png"
+                    data-background-size="contain"
+                ></section>
+                <section>
+                    <h1>I'm just really old</h1>
+                </section>
+                <section data-background-image="img/kids.gif" data-background-size="contain">
+                    <div class="attribution"></div>
+                </section>
+                <section>
+                    <h1>Quantifying my Tired and Haggard self</h1>
+                    <footer>
+                        <h3>PyDiff - 2019-05-14 - @martinjc</h3>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal/lib/js/head.min.js"></script>
+        <script src="../../reveal/js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                width: "100%",
+                height: "100%",
+                margin: 0,
+                minScale: 1,
+                maxScale: 1,
+
+                controls: false,
+                transition: "none",
+
+                dependencies: [
+                    { src: "../../reveal/plugin/markdown/marked.js" },
+                    { src: "../../reveal/plugin/markdown/markdown.js" },
+                    { src: "../../reveal/plugin/notes/notes.js", async: true },
+                    {
+                        src: "../../reveal/plugin/highlight/highlight.js",
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    </body>
+</html>

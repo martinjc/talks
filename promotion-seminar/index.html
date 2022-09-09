@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../reveal/css/reveal.css" />
+
+    <!-- My CSS Overrides -->
+    <link rel="stylesheet" href="../css/slide_style.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = window.location.search.match(/print-pdf/gi)
+            ? "../reveal/css/print/pdf.css"
+            : "../reveal/css/print/paper.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- 
+                    https://aapt.scitation.org/doi/abs/10.1119/1.18809
+                    https://teachingandlearninginhighered.org/2013/11/30/active-learning-has-an-ancient-history/
+                    https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3557656/
+
+                    Research has demonstrated that active learning offers significant benefits to students over traditional passive delivery. These benefits can be realised with very simple adjustments to teaching style and planned activities. It is also possible to go further and remove the passive element from teaching contact time entirely. In this talk I will discuss some of the current research on teaching methods and student learning, and reflect on my personal experiences and experiments with flipped learning over the last five years.
+
+
+                    Teaching Philosophy
+                        Vince
+                        Active Learning
+                        FUCK Powerpoint - but it's easy to include active learning in a traditional lecture
+
+                    "Students will remember more content if brief activities are introduced into the lecture"
+                   
+                    Collaborative and Cooperative learning facilitates better student learning than inidividual work (though individual work encouraging individual responsibility still matters)
+
+                    PBL may not increase student performance but promotes better attitudes and study habits
+
+                    Active learning is not the cure-all, but has significant benefits
+
+                    Why lecture?
+
+                    Quick, Cheap, Efficient - Delivery of Content rather than Facilitation of Learning
+
+                    Have I drunk the Kool Aid? Yes
+                    Would I like us to teach almost 100% flipped? Yes
+
+                    Flipped learning
+                        more time for students educational, emotional and social needs
+                        more time with students =  better hearing about what they need 
+
+                    Is it good for all students?
+                        no - tails are still an issue and will require more or less support
+                        but this is also true of 'traditional' methods
+
+                    lecture capture causes poor attendance
+                        No - poor engagement in lectures causes poor attendance
+
+                    
+                 -->
+            <section>
+                <h1>So, you have a lecture and a lab...</h1>
+                <div class="fragment">
+                    <p>Or:</p>
+                    <h3>Reflections on a shift to active learning</h3>
+                </div>
+            </section>
+
+            <section data-background-image="img/start.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/iamtheloop/212288059">"start or stop"</a> by <a href="https://www.flickr.com/photos/iamtheloop/">Erin Resso - CC-BY 2.0</a></p>
+                </div>
+                <aside class="notes">
+                    Wanted to do something new, only came up with topic on Wednesday...
+                </aside>
+            </section>
+
+            <section>
+                <h1>Why do we lecture?</h1>
+            </section>
+
+            <section data-background-image="img/lecture.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/oistedu/34016684366">"Michael Berry Public Lecture 7 Wonders Physics"</a> by <a href="https://www.flickr.com/photos/oistedu/">OIST - CC-BY-2.0</a></p>
+                </div>
+                <aside class="notes">
+                    Lecturing. Cheap, Efficient. Very centred on a 'content delivery' model.
+                    "represent a conception of education in which teachers who know give knowledge to students who do not and are therefore supposed to have nothing worth contributing" - Bligh, what's the use of lectures?
+                </aside>
+            </section>
+
+            <section data-background-image="img/old-lecture.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p> <a href="https://en.wikipedia.org/wiki/File:Laurentius_de_Voltolina_001.jpg">"Liber ethicorum des Henricus de Alemannia"</a> by Laurentius de Voltolina - Public Domain</p>
+                </div>
+                <aside class="notes">
+                    "It's what we've always done"
+                    I was educated by being lectured at, my lecturers were educated by being lectured to
+                    Note the prepositions - we are lectured 'at', we are lectured 'to', we are never lectured 'with' - it's not an inclusive process
+                </aside>
+            </section>
+
+            <section data-background-image="img/webapps.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Approval Documents, 2013/14</p>
+                </div>
+                <aside class="notes">
+                    And it's exactly how I thought teaching should be done. We *must* have a lecture and a lab...
+                </aside>
+            </section>
+
+            <section data-background-image="img/classroom.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/stanfordedtech/4500908641">"IMG_2123"</a> by <a href="https://www.flickr.com/photos/stanfordedtech/">Stanford University EdTech - CC-BY-NC-ND 2.0</a></p>
+                </div>
+                <aside class="notes">So that's what I did (hop back and forth)</aside>
+            </section>
+
+            <section data-background-image="img/lab.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/aaltonen/23089051">"IMG_0072"</a> by <a href="https://www.flickr.com/photos/aaltonen/">aaltonen - CC-BY 2.0</a></p>
+                </div>
+                <aside class="notes">3-4 hours of lecturing, followed by 3 hours of labs, for 7 weeks of the semester.
+                </aside>
+            </section>
+
+            <section data-background-image="img/trump.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p>Official White House Photo by Shealah Craighead - Public domain</a></p>
+                </div>
+                <aside class="notes">Which is really really stupid
+                </aside>
+            </section>
+
+            <section>
+                <blockquote>
+                    "Active learning is generally defined as any instructional method that engages students in the learning process. In short active learning requires students to do meaningful learning activities and think about what they are doing."
+                </blockquote>
+                <cite>Prince, Michael. "Does active learning work? A review of the research."
+                    <br>Journal of engineering education 93.3 (2004): 223-231</cite>
+                <aside class="notes">
+                    So of course at this time I was learning about education for the first time really, and came across active learning as an idea
+                </aside>
+            </section>
+
+            <section data-background-image="img/active-vs-passive.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>Ruhl, K., Hughes, C. & Schloss, P. (1987). Using the Pause Procedure to Enhance Lecture Recall. Teacher Education & Special Education. V 10: pp. 14-18</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/physics.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>Laws, P., D. Sokoloff, and R. Thornton (1999), Promoting Active Learning Using the Results of Physics Education Research. UniServe Science News. Vol. 13.</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/hedges.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>Freeman, Scott, Sarah Eddy, Miles McDonough, Michelle Smith, Nnadozie Okoroafor, Hannah Jordt, and Mary Pat Wenderoth (2014). Active learning increases performance in science, engineering, and mathematics. Proceedings of the National Academy of Sciences of the United States of America. 111: 3 (8410-8415).</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/timetable-request.png" data-background-size="cover">
+                <aside class="notes">
+                    and so I decided to put it into practice - move all my teaching into the lab and break it up to allow time for active learning between short periods of 'content delivery'
+                    but then I realised another problem
+                </aside>
+            </section>
+
+            <section data-background-image="img/cmt112-1.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Lecture Capture, 2015/16</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/cmt112-2.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Lecture Capture, 2015/16</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/cmt112-3.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Lecture Capture, 2015/16</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/cmt112-4.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Lecture Capture, 2015/16</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/cmt112-5.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>CMT112 - Lecture Capture, 2015/16</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/dry.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/reisek/3538228681">"dry"</a> by <a href="https://www.flickr.com/photos/reisek/">Reisek - CC-BY-NC-ND 2.0</a></p>
+                </div>
+                <aside class="notes">
+                    violating one of my our key software engineering/programming principles
+                    Dont. Repeat. Yourself
+                </aside>
+            </section>
+
+            <section data-background-image="img/trump.jpg" data-background-size="cover">
+                <div class="attribution">
+                    <p>Official White House Photo by Shealah Craighead - Public domain</a></p>
+                </div>
+                <aside class="notes">Which is really really stupid</aside>
+            </section>
+
+            <section>
+                <blockquote>Flipped Learning is a pedagogical approach in which direct instruction moves from the group learning space to the individual learning space, and the resulting group space is transformed into a dynamic, interactive learning environment where the educator guides students as they apply concepts and engage creatively in the subject matter.</blockquote>
+                <cite>Flipped Learning Network (FLN). (2014) The Four Pillars of F-L-I-P</cite>
+            </section>
+
+            <section data-background-image="img/flipped.jpg" data-background-size="contain">
+                <div class="attribution">
+                    <p></p>
+                </div>
+            </section>
+
+            <section>
+                <blockquote>
+                    Flipped Learning is a pedagogical approach in which first contact with new concepts moves from the group learning space to the individual learning space <strong>in the form of structured activity</strong>, and the resulting group space is transformed into a dynamic, interactive learning environment where the educator guides students as they apply concepts and engage creatively in the subject matter.
+                </blockquote>
+                <cite> <a href="https://github.com/RobertTalbert/roberttalbert.github.io/blob/master/_posts/2017-06-27-how-to-define-flipped-learning.md">Robert Talbert, "How to define flipped learning" </a>(2017) </cite>
+                <aside class="notes">
+                    Definitions don't mention video, it's not a necessary component of flipped learning
+                </aside>
+            </section>
+
+            <section data-background-image="img/lesson_plan.png" data-background-size="contain">
+                <div class="attribution">
+                    <p></p>
+                </div>
+            </section>
+
+            <section data-background-image="img/readings_vids.png" data-background-size="contain">
+                <div class="attribution">
+                    <p></p>
+                </div>
+            </section>
+
+            <section data-background-image="img/quiz.png" data-background-size="contain">
+            </section>
+
+            <section data-background-image="img/lab-exercise.png" data-background-size="contain">
+            </section>
+
+            <section>
+                <blockquote>
+                    The vast majority of the papers reviewed show either higher scores than students in traditional settings, or else the differences are not statistically significant
+                </blockquote>
+                <blockquote>Only rarely do you see students in flipped learning performing significantly worse</blockquote>
+                <cite>http://rtalbert.org/what-does-the-research-say/</cite>
+            </section>
+
+            <section>
+                <blockquote>One of the most consistent results in flipped learning research is that it is strongly correlated with improved class meeting attendance</blockquote>
+                <cite>http://rtalbert.org/what-does-the-research-say/</cite>
+            </section>
+
+            <section>
+                <blockquote>flipped learning incurs major costs in time and effort, especially when first starting up, and as a result instructors need support from institutions</blockquote>
+                <cite>http://rtalbert.org/what-does-the-research-say/</cite>
+            </section>
+
+            <section data-background-image="img/panopto-2017.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>Panopto Usage stats, 2017</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/panopto-2018.png" data-background-size="contain">
+                <div class="attribution">
+                    <p>Panopto Usage stats, 2018 to date</p>
+                </div>
+            </section>
+
+            <section data-background-image="img/end.jpg" data-background-size="cover" data-state="dimbg">
+                <h3 class="fragment">Active learning improves student outcomes</h3>
+                <h3 class="fragment">Flipped learning can improve efficiency, engagement and satisfaction</h3>
+                <h4 class="fragment">by removing redundancy and making more time for active learning</h4>
+                <h4 class="fragment">but requires effort</h4>
+                <div class="attribution">
+                    <p><a href="https://www.flickr.com/photos/scragz/131809761">"End"</a> by <a href="https://www.flickr.com/photos/scragz/">Jason Scragz - CC-BY 2.0</a></p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            width: "100%",
+            height: "100%",
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+
+            controls: false,
+            transition: "none",
+            history: true,
+
+            dependencies: [
+                { src: "../reveal/plugin/markdown/marked.js" },
+                { src: "../reveal/plugin/markdown/markdown.js" },
+                { src: "../reveal/plugin/notes/notes.js", async: true },
+                {
+                    src: "../reveal/plugin/highlight/highlight.js",
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
